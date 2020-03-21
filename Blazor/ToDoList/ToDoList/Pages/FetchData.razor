@@ -2,6 +2,7 @@
 
 @using ToDoList.Data
 @inject WeatherForecastService ForecastService
+@inject HealthCareContext Context
 
 <h1>Weather forecast</h1>
 
@@ -23,8 +24,8 @@ else
         <DxDataGridSpinEditColumn Field="@nameof(WeatherForecast.TemperatureC)" Caption="@("Temp. (\x2103)")"
                                   TextAlignment="DataGridTextAlign.Left"></DxDataGridSpinEditColumn>
         @*<DxDataGridComboBoxColumn Field="@nameof(WeatherForecast.WeatherType)" Caption="Cloudiness"
-                                  DataAsync="@ForecastService.GetCloudinessAsync" TextAlignment="DataGridTextAlign.Left"></DxDataGridComboBoxColumn>
-        <DxDataGridCheckBoxColumn Field="@nameof(WeatherForecast.Precipitates)"></DxDataGridCheckBoxColumn>*@
+                                      DataAsync="@ForecastService.GetCloudinessAsync" TextAlignment="DataGridTextAlign.Left"></DxDataGridComboBoxColumn>
+            <DxDataGridCheckBoxColumn Field="@nameof(WeatherForecast.Precipitates)"></DxDataGridCheckBoxColumn>*@
     </DxDataGrid>
 
     <table class="table">
@@ -58,5 +59,8 @@ else
     {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
         DataSource = await ForecastService.GetForecastAsync(DateTime.Now);
+
+        var count = Context.BagsKorisnik.Count();
+
     }
 }
