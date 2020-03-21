@@ -14,8 +14,6 @@ namespace ToDoList.Pages
         protected override async Task OnInitializedAsync()
         {
             DataSource = await Context.BagsKorisnik.ToListAsync();
-
-            var xx = DataSource;
         }
     }
 }
